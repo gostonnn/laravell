@@ -17,15 +17,15 @@ use App\Http\Controllers\API\AuthController;
 */
 
 Route::group(["middleware"=>[ "auth:sanctum" ]],function(){
-    Route::post("/logout",[AuthController::class,"logout"]);//oke
+    Route::post("/logout",[AuthController::class,"logout"]);
     Route::post("/szalami",[SzalamiController::class,"store"]);
-    Route::put("/szalami/{data}",[SzalamiController::class,"update"]);//oke
-    Route::delete("/szalami/delete/{id}",[SzalamiController::class,"destroy"]);//oke
+    Route::put("/szalami/{data}",[SzalamiController::class,"update"]);
+    Route::delete("/szalami/delete/{id}",[SzalamiController::class,"destroy"]);
 });
 
-Route::post("/register",[AuthController::class,"signup"]);//oke
-Route::post("/login",[AuthController::class,"signin"]);//oke
-Route::get( "/szalami",[SzalamiController::class,"index" ]);//oke
-Route::get("/szalami/{id}",[SzalamiController::class,"show"]);//oke
-Route::get("/szalami/search/{nev}", [SzalamiController::class, "search"]);//oke
-Route::get("/szalami/filter/{tipus}", [SzalamiController::class, "filter"]);//oke
+Route::post("/register",[AuthController::class,"signup"]);
+Route::post("/login",[AuthController::class,"signin"]);
+Route::get( "/szalami",[SzalamiController::class,"index" ]);
+Route::get("/szalami/{id}",[SzalamiController::class,"show"]);
+Route::get("/szalami/search/{nev}", [SzalamiController::class, "search"]);
+Route::get("/szalami/filter/{tipus}", [SzalamiController::class, "filter"]);

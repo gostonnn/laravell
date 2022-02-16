@@ -26,29 +26,29 @@ class SzalamiController extends BaseController
     public function update(Request $request, Szalami $data){
         $input = $request->all();
         $validator = Validator::make($input,[
-            "nev" =>"required",
-            "ara"=>"required",
-            "tipus"=>"required",
-            "ido"=>"required",
+            "név" =>"required",
+            "ár"=>"required",
+            "típus"=>"required",
+            "lejárati_idő"=>"required",
         ]);
         if($validator->fails()){
             return $this->sendError($validator->errors("Validálási hiba", $validator->errors()));
         }
-        $data->nev = $input["nev"];
-        $data->ara = $input["ara"];
-        $data->tipus = $input["tipus"];
-        $data->ido = $input["ido"];
+        $data->nev = $input["név"];
+        $data->ara = $input["ár"];
+        $data->tipus = $input["típus"];
+        $data->ido = $input["lejárati_idő"];
         $data->save();
-        return $this->sendResponse(new SzalamiResource($data),"Poszt módosítva");
+        return $this->sendResponse(new SzalamiResource($data),"termék módosítva");
     }
     public function store(Request $request){
         //dd($request);
         $input = $request->all();
         $validator = Validator::make($input,[
-            "nev" =>"required",
-            "ara"=>"required",
-            "tipus"=>"required",
-            "ido"=>"required",
+            "név" =>"required",
+            "ár"=>"required",
+            "típus"=>"required",
+            "lejárati_idő"=>"required",
         ]);
         if($validator->fails()){
             return $this->sendError($validator->errors("Validálási hiba", $validator->errors()));
@@ -57,17 +57,17 @@ class SzalamiController extends BaseController
         return $this->sendResponse(new SzalamiResource($data), "Sikeres hozzáadás");
     }
     public function search($name){
-        $Szalami = Szalami::where('nev', 'like', '%'.$name.'%')->get();
-        if(count($Szalami)==0){
+        $szalami = Szalami::where('név', 'like', '%'.$name.'%')->get();
+        if(count($szalami)==0){
             return $this->sendError("Nincs találat a keresésre");
         }
-        return $this->sendResponse($Szalami, "Keresési találatok betöltve");
+        return $this->sendResponse($szalami, "Keresési találatok betöltve");
     }
     public function filter($tipus){
-        $Szalami = Szalami::where('tipus', '=', $tipus)->get();
-        if(count($Szalami)==0){
+        $szalami = Szalami::where('típus', '=', $tipus)->get();
+        if(count($szalami)==0){
             return $this->sendError("Nincs találat a szűrésre");
         }
-        return $this->sendResponse($Szalami, "Szűrési találatok betöltve");
+        return $this->sendResponse($szalami, "Szűrési találatok betöltve");
     }
 }

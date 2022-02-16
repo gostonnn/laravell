@@ -10,9 +10,9 @@ class Szalami extends Model
     use HasFactory;
 
     protected $filltable = [
-        "nev",
-        "ara",
-        "tipus",
-        "ido"
+        "név",
+        "ár",
+        "típus",
+        "lejárati_idő"
     ];
 }

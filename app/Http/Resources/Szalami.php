@@ -16,10 +16,10 @@ class Szalami extends JsonResource
     {
         return [
             "id" =>$this->id,
-            "nev" =>$this->nev,
-            "ara"=>$this->ara,
-            "tipus"=>$this->tipus,
-            "ido"=>$this->ido,
+            "név" =>$this->név,
+            "ár"=>$this->ár,
+            "típus"=>$this->típus,
+            "lejárati_idő"=>$this->lejárati_idő,
             "created_at"=>$this->created_at->format("m/d/Y"),
             "updated_at"=>$this->updated_at->format("m/d/Y"),
         ];
